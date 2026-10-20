@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Test coverage
+coverage/
+
+# Logs
+npm-debug.log*
+*.log
+
+# Environment files (keep the documented example)
+.env*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editors (keep shared VS Code settings)
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+*.swp
