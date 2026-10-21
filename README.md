@@ -34,10 +34,23 @@ npm run dev
 | `npm run format:check` | Checks formatting without writing                              |
 | `npm run check`        | Runs everything CI runs: format, lint, typecheck, build, audit |
 
+## Environment variables
+
+Validated at startup by [`src/config.ts`](src/config.ts); the app exits with a list of problems
+if any are missing or invalid. Copy [`.env.example`](.env.example) to `.env` for local values.
+Use the `add-env-var` skill to add one, so every place below stays in sync.
+
+| Variable    | Required | Default       | Secret | Description                                        |
+| ----------- | -------- | ------------- | ------ | -------------------------------------------------- |
+| `NODE_ENV`  | No       | `development` | No     | Runtime environment: development, test, production |
+| `LOG_LEVEL` | No       | `info`        | No     | Minimum log level: debug, info, warn, error        |
+| `APP_NAME`  | Yes      | —             | No     | Human-readable app name shown in logs              |
+
 ## Folder structure
 
 ```text
 .
+├── .claude/skills/         # Project skills: add-env-var, prepare-pr
 ├── .github/
 │   ├── ISSUE_TEMPLATE/      # Bug report and feature request forms
 │   ├── workflows/           # ci, pr-title, codeql
@@ -66,8 +79,8 @@ npm run dev
   `package.json` — no build-time rewriting. A custom `source` condition points TypeScript,
   ESLint and tsx at `src/`; plain `node` resolves the same import to `dist/`. (`@/` isn't
   possible natively: Node requires subpath imports to start with `#`.)
-- **Config:** read env vars only through `config` from `src/config.ts`. Add new variables to
-  the zod schema **and** `.env.example`. `.env` is loaded with Node's built-in
+- **Config:** read env vars only through `config` from `src/config.ts`. Add new variables with
+  the `add-env-var` skill, which updates the zod schema, `.env.example` and the table above. `.env` is loaded with Node's built-in
   `process.loadEnvFile()` — no dotenv.
 
 ## Contributing
