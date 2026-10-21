@@ -1,7 +1,7 @@
 name: PR title
 
-# PRs are squash-merged, so the PR title becomes the commit message on main
-# and must follow Conventional Commits too.
+# PRs are merged with a merge commit whose message includes the PR title,
+# so titles follow Conventional Commits like the commits themselves.
 on:
   pull_request:
     types: [opened, edited, synchronize, reopened]

@@ -33,8 +33,9 @@ docs: explain path alias
 Common types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`, `build`, `perf`.
 Add `!` after the type (`feat!:`) or a `BREAKING CHANGE:` footer for breaking changes.
 
-PRs are **squash-merged**, so the **PR title** becomes the commit on `main` and is validated
-the same way.
+PRs are merged with a **merge commit**, so every commit in your branch lands on `main` as-is.
+Keep them meaningful: squash fixups like "fix typo" or "address review" locally before opening
+the PR. The PR title appears in the merge commit and is validated the same way.
 
 ## Before opening a PR
 

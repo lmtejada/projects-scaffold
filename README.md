@@ -76,10 +76,10 @@ GitHub copies files, but **not** repository settings. In the new repo:
 1. **Update project identity:** `name`, `description` and `author` in `package.json`, the
    title of this README, `LICENSE`, `CODEOWNERS`, and the URLs in `.github/SECURITY.md` and
    `.github/ISSUE_TEMPLATE/config.yml`.
-2. **Merge settings** (Settings → General → Pull Requests): allow squash merging only,
+2. **Merge settings** (Settings → General → Pull Requests): allow merge commits only,
    enable "Automatically delete head branches".
-3. **Ruleset for `main`** (Settings → Rules → Rulesets): require a pull request, require the
-   `Format and Type Check` status check, block force pushes and deletion.
+3. **Ruleset for `main`** (Settings → Rules → Rulesets): require a pull request (allowed
+   merge method: merge), require the `Format and Type Check` status check, block force pushes and deletion.
 4. **Security** (Settings → Advanced Security): enable Dependabot alerts and security
    updates, secret scanning with push protection, and private vulnerability reporting.
 5. **Dependabot** starts using `.github/dependabot.yml` automatically, but check that its
@@ -88,7 +88,7 @@ GitHub copies files, but **not** repository settings. In the new repo:
 Or do it with the `gh` CLI:
 
 ```sh
-gh repo edit --enable-squash-merge --enable-merge-commit=false --enable-rebase-merge=false \
+gh repo edit --enable-merge-commit --enable-squash-merge=false --enable-rebase-merge=false \
   --delete-branch-on-merge --enable-secret-scanning --enable-secret-scanning-push-protection
 gh api -X PUT repos/{owner}/{repo}/vulnerability-alerts
 gh api -X PUT repos/{owner}/{repo}/automated-security-fixes
