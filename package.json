@@ -56,5 +56,10 @@
       "prettier --write"
     ],
     "*.{json,jsonc,md,yml,yaml}": "prettier --write"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   }
 }
