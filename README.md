@@ -81,7 +81,7 @@ GitHub copies files, but **not** repository settings. In the new repo:
 2. **Merge settings** (Settings → General → Pull Requests): allow squash merging only,
    enable "Automatically delete head branches".
 3. **Ruleset for `main`** (Settings → Rules → Rulesets): require a pull request, require the
-   `ci` status check, block force pushes and deletion.
+   `Format and Type Check` status check, block force pushes and deletion.
 4. **Security** (Settings → Advanced Security): enable Dependabot alerts and security
    updates, secret scanning with push protection, and private vulnerability reporting.
 5. **Dependabot** starts using `.github/dependabot.yml` automatically, but check that its
