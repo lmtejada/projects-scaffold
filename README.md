@@ -46,7 +46,6 @@ npm run dev
 │   ├── pull_request_template.md
 │   └── SECURITY.md
 ├── .husky/                  # pre-commit, commit-msg, pre-push hooks
-├── .vscode/                 # Recommended extensions and format-on-save
 ├── docs/adr/                # Architecture decision records
 ├── src/
 │   ├── config.ts            # Loads and validates env vars (zod), exports `config`
