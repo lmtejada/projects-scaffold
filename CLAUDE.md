@@ -46,7 +46,8 @@ In `.claude/skills/`:
 
 - `add-env-var`: add, rename or remove an env variable everywhere it must be declared.
 - `prepare-pr`: run the checks, review the diff and commits, and draft the PR description.
+- `write-adr`: turn a decision from the conversation into a numbered ADR in `docs/adr/`.
 
 ## Decisions
 
-Architecture decisions are recorded in `docs/adr/`. Add a new ADR for significant changes.
+Architecture decisions are recorded in `docs/adr/`. Add a new ADR for significant changes, using the `write-adr` skill.

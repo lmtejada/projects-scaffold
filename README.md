@@ -50,7 +50,7 @@ Use the `add-env-var` skill to add one, so every place below stays in sync.
 
 ```text
 .
-├── .claude/skills/         # Project skills: add-env-var, prepare-pr
+├── .claude/skills/         # Project skills: add-env-var, prepare-pr, write-adr
 ├── .github/
 │   ├── ISSUE_TEMPLATE/      # Bug report and feature request forms
 │   ├── workflows/           # ci, pr-title, codeql
@@ -122,7 +122,8 @@ fix most issues automatically. The Git hooks also check your work along the way:
 | `pre-push`   | `npm run typecheck`               |
 
 Fill in the PR template, keep PRs focused on one change, and make sure CI is green. For
-significant architectural changes, add an ADR in `docs/adr/`.
+significant architectural changes, add an ADR in `docs/adr/` (the `write-adr` skill writes one
+from the discussion).
 
 ## After creating a repo from this template
 
