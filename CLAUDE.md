@@ -34,7 +34,7 @@ npm run format      # auto-format
 - `tsconfig.json` strictness flags, `module`/`target`, or the `#/*` alias (`package.json` `"imports"` + `customConditions`).
 - ESLint rules or presets — fix the code instead of disabling rules. No `eslint-disable`
   comments without a reason in the same comment.
-- Git hooks in `.husky/`, `commitlint.config.ts`, `.lintstagedrc.json`.
+- Git hooks in `.husky/`, `commitlint.config.ts`, the `lint-staged` key in `package.json`.
 - `.github/workflows/*`: action SHA pins, permissions, and the CI job name
   `Format and Type Check` (the `main` ruleset requires a check with that exact name).
 - `.nvmrc` / `engines` / the `@types/node` major (keep all three on the same Node major), or adding new dependencies (especially runtime ones, or `dotenv`).
