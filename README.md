@@ -34,10 +34,16 @@ npm run dev
 | `npm run format:check` | Checks formatting without writing                              |
 | `npm run check`        | Runs everything CI runs: format, lint, typecheck, build, audit |
 
+## Environment variables
+
+Every variable is listed and explained in [`.env.example`](.env.example), and validated at
+startup by [`src/config.ts`](src/config.ts).
+
 ## Folder structure
 
 ```text
 .
+├── .claude/skills/         # Project skills: add-env-var, prepare-pr, write-adr
 ├── .github/
 │   ├── ISSUE_TEMPLATE/      # Bug report and feature request forms
 │   ├── workflows/           # ci, pr-title, codeql
@@ -45,7 +51,7 @@ npm run dev
 │   ├── pull_request_template.md
 │   └── SECURITY.md
 ├── .husky/                  # pre-commit, commit-msg, pre-push hooks
-├── docs/adr/                # Architecture decision records
+├── docs/adr/                # Architecture decision records (start from `0. template.md`)
 ├── src/
 │   ├── config.ts            # Loads and validates env vars (zod), exports `config`
 │   └── index.ts             # Entry point
@@ -66,8 +72,8 @@ npm run dev
   `package.json` — no build-time rewriting. A custom `source` condition points TypeScript,
   ESLint and tsx at `src/`; plain `node` resolves the same import to `dist/`. (`@/` isn't
   possible natively: Node requires subpath imports to start with `#`.)
-- **Config:** read env vars only through `config` from `src/config.ts`. Add new variables to
-  the zod schema **and** `.env.example`. `.env` is loaded with Node's built-in
+- **Config:** read env vars only through `config` from `src/config.ts`. Add new variables with
+  the `add-env-var` skill, which updates the zod schema and `.env.example`. `.env` is loaded with Node's built-in
   `process.loadEnvFile()` — no dotenv.
 
 ## Contributing
@@ -109,7 +115,8 @@ fix most issues automatically. The Git hooks also check your work along the way:
 | `pre-push`   | `npm run typecheck`               |
 
 Fill in the PR template, keep PRs focused on one change, and make sure CI is green. For
-significant architectural changes, add an ADR in `docs/adr/`.
+significant architectural changes, add an ADR in `docs/adr/` (the `write-adr` skill writes one
+from the discussion).
 
 ## After creating a repo from this template
 
