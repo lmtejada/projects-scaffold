@@ -26,14 +26,13 @@ npm run dev
 | ---------------------- | -------------------------------------------------------------- |
 | `npm run dev`          | Runs `src/index.ts` with tsx and restarts on changes           |
 | `npm run build`        | Compiles `src/` to `dist/` with `tsc`                          |
+| `npm start`            | Runs the compiled app from `dist/` (run `build` first)         |
 | `npm run typecheck`    | Type-checks `src/` and the config files without emitting       |
 | `npm run lint`         | Runs ESLint (type-aware)                                       |
 | `npm run lint:fix`     | Runs ESLint and applies automatic fixes                        |
 | `npm run format`       | Formats all files with Prettier                                |
 | `npm run format:check` | Checks formatting without writing                              |
 | `npm run check`        | Runs everything CI runs: format, lint, typecheck, build, audit |
-
-After `npm run build`, start the app with `node dist/index.js`.
 
 ## Folder structure
 
