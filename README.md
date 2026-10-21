@@ -69,6 +69,47 @@ npm run dev
   the zod schema **and** `.env.example`. `.env` is loaded with Node's built-in
   `process.loadEnvFile()` — no dotenv.
 
+## Contributing
+
+### Branch naming
+
+Branch from `main` using `<type>/<short-description>`, with the same types as commits:
+`feat/add-health-endpoint`, `fix/config-port-parsing`, `docs/update-readme`, `chore/bump-deps`.
+
+### Commit messages
+
+Commits follow [Conventional Commits](https://www.conventionalcommits.org/), enforced by
+commitlint in the `commit-msg` hook:
+
+```text
+<type>(<optional scope>): <subject>
+
+feat(config): add PORT variable
+fix: handle missing .env file
+docs: explain path alias
+```
+
+Common types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `ci`, `build`, `perf`.
+Add `!` after the type (`feat!:`) or a `BREAKING CHANGE:` footer for breaking changes.
+
+PRs are merged with a **merge commit**, so every commit in your branch lands on `main` as-is.
+Keep them meaningful: squash fixups like "fix typo" or "address review" locally before opening
+the PR. The PR title appears in the merge commit and is validated the same way.
+
+### Before opening a PR
+
+Run `npm run check`. It runs exactly what CI runs, and `npm run format` and `npm run lint:fix`
+fix most issues automatically. The Git hooks also check your work along the way:
+
+| Hook         | Runs                              |
+| ------------ | --------------------------------- |
+| `pre-commit` | ESLint + Prettier on staged files |
+| `commit-msg` | commitlint                        |
+| `pre-push`   | `npm run typecheck`               |
+
+Fill in the PR template, keep PRs focused on one change, and make sure CI is green. For
+significant architectural changes, add an ADR in `docs/adr/`.
+
 ## After creating a repo from this template
 
 GitHub copies files, but **not** repository settings. In the new repo:
@@ -79,7 +120,8 @@ GitHub copies files, but **not** repository settings. In the new repo:
 2. **Merge settings** (Settings → General → Pull Requests): allow merge commits only,
    enable "Automatically delete head branches".
 3. **Ruleset for `main`** (Settings → Rules → Rulesets): require a pull request (allowed
-   merge method: merge), require the `Format and Type Check` status check, block force pushes and deletion.
+   merge method: merge), require the `Format and Type Check` status check, block force
+   pushes and deletion.
 4. **Security** (Settings → Advanced Security): enable Dependabot alerts and security
    updates, secret scanning with push protection, and private vulnerability reporting.
 5. **Dependabot** starts using `.github/dependabot.yml` automatically, but check that its
