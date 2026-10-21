@@ -41,7 +41,6 @@ npm run dev
 ├── .github/
 │   ├── ISSUE_TEMPLATE/      # Bug report and feature request forms
 │   ├── workflows/           # ci, pr-title, codeql
-│   ├── CODEOWNERS
 │   ├── dependabot.yml
 │   ├── pull_request_template.md
 │   └── SECURITY.md
@@ -117,7 +116,7 @@ significant architectural changes, add an ADR in `docs/adr/`.
 GitHub copies files, but **not** repository settings. In the new repo:
 
 1. **Update project identity:** `name`, `description` and `author` in `package.json`, the
-   title of this README, `LICENSE`, `CODEOWNERS`, and the URLs in `.github/SECURITY.md` and
+   title of this README, `LICENSE`, and the URLs in `.github/SECURITY.md` and
    `.github/ISSUE_TEMPLATE/config.yml`.
 2. **Merge settings** (Settings → General → Pull Requests): allow merge commits only,
    enable "Automatically delete head branches".
