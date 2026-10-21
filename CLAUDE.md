@@ -37,7 +37,7 @@ npm run format      # auto-format
 - Git hooks in `.husky/`, `commitlint.config.ts`, `.lintstagedrc.json`.
 - `.github/workflows/*`: action SHA pins, permissions, and the CI job name
   `Format and Type Check` (the `main` ruleset requires a check with that exact name).
-- `.nvmrc` / `engines`, or adding new dependencies (especially runtime ones, or `dotenv`).
+- `.nvmrc` / `engines` / the `@types/node` major (keep all three on the same Node major), or adding new dependencies (especially runtime ones, or `dotenv`).
 - `LICENSE`.
 
 ## Decisions
