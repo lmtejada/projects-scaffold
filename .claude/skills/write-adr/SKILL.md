@@ -12,9 +12,10 @@ plausible-sounding reason nobody gave is worse than no ADR, because people will 
 
 ## 1. Read the format and the existing records
 
-- Read `docs/adr/0001-record-architecture-decisions.md`. It defines the rules and contains the
-  template, between its `## Template` heading and the end of the file. Use the template as it
-  is today; don't rely on a remembered version.
+- Read `docs/adr/template.md`, the structure to fill in, and
+  `docs/adr/0001-record-architecture-decisions.md`, which states the rules and shows a finished
+  ADR in the house style. Use them as they are today; don't rely on a remembered version.
+  `template.md` isn't an ADR, so skip it when numbering.
 - List `docs/adr/` and skim the titles, to find:
   - **the next number:** highest existing number + 1, zero-padded to four digits
   - **related ADRs:** if this decision reverses or replaces one, it supersedes it (see step 4)
@@ -44,13 +45,13 @@ list with the user first.
 - **Heading:** `# N. Title`, without leading zeros, matching 0001's style.
 - **Status:** `Accepted`, unless the user says it's still a proposal.
 - **Date:** today.
-- **Options:** the template has no separate section for them. Put them in **Context**, or in
-  **Decision** as "We considered X and Y; …", whichever reads better. Keep them, because
-  they're often the most useful part later.
+- **Options:** go in **Decision** as "We considered … and rejected it because …", as the
+  template shows. Keep them, because they're often the most useful part later. Leave the
+  bullet out if no alternatives were discussed; don't invent one.
 - **Length:** as short as it can be while still answering "why?". Usually 10–20 bullets in
   total. Link to the PR, issue, release notes or advisory when the conversation mentions one.
-- **Style:** follow [Writing style](#writing-style) below. It overrides wording hints inside
-  the template, such as "stated in full sentences".
+- **Style:** follow [Writing style](#writing-style) below.
+- **Template comment:** drop the HTML comment block from `template.md`.
 
 Run `npm run format` (or `prettier --write` on the file) afterwards so it passes
 `format:check`.
