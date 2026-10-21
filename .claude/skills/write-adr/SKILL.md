@@ -12,10 +12,10 @@ plausible-sounding reason nobody gave is worse than no ADR, because people will 
 
 ## 1. Read the format and the existing records
 
-- Read `docs/adr/template.md`, the structure to fill in, and
+- Read `docs/adr/0. template.md`, the structure to fill in, and
   `docs/adr/0001-record-architecture-decisions.md`, which states the rules and shows a finished
   ADR in the house style. Use them as they are today; don't rely on a remembered version.
-  `template.md` isn't an ADR, so skip it when numbering.
+  `0. template.md` isn't an ADR, so skip it when numbering.
 - List `docs/adr/` and skim the titles, to find:
   - **the next number:** highest existing number + 1, zero-padded to four digits
   - **related ADRs:** if this decision reverses or replaces one, it supersedes it (see step 4)
@@ -51,7 +51,7 @@ list with the user first.
 - **Length:** as short as it can be while still answering "why?". Usually 10–20 bullets in
   total. Link to the PR, issue, release notes or advisory when the conversation mentions one.
 - **Style:** follow [Writing style](#writing-style) below.
-- **Template comment:** drop the HTML comment block from `template.md`.
+- **Template comment:** drop the HTML comment block from the template.
 
 Run `npm run format` (or `prettier --write` on the file) afterwards so it passes
 `format:check`.

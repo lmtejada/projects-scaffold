@@ -58,7 +58,7 @@ Use the `add-env-var` skill to add one, so every place below stays in sync.
 │   ├── pull_request_template.md
 │   └── SECURITY.md
 ├── .husky/                  # pre-commit, commit-msg, pre-push hooks
-├── docs/adr/                # Architecture decision records (start from template.md)
+├── docs/adr/                # Architecture decision records (start from `0. template.md`)
 ├── src/
 │   ├── config.ts            # Loads and validates env vars (zod), exports `config`
 │   └── index.ts             # Entry point
