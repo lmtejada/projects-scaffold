@@ -1,6 +1,6 @@
 ---
 name: write-adr
-description: Turn a decision made in the conversation into a numbered Architecture Decision Record in `docs/adr/`, using this project's ADR format (Nygard style — Status, Date, Context, Decision, Consequences). Handles numbering, file naming, and superseding older ADRs. Use this whenever the user asks to record, document, write up, or "ADR" a decision, says "let's capture why we did this", or has just settled a significant choice (a library, an architecture pattern, a tooling or workflow change, a trade-off) that a future contributor would otherwise wonder about — even if they don't say "ADR".
+description: Turn a decision made in the conversation into a numbered Architecture Decision Record in `docs/adr/`, using this project's ADR format (Nygard style — Status, Date, Context, Decision, Consequences). Handles numbering, file naming, and replacing older ADRs. Use this whenever the user asks to record, document, write up, or "ADR" a decision, says "let's capture why we did this", or has just settled a significant choice (a library, an architecture pattern, a tooling or workflow change, a trade-off) that a future contributor would otherwise wonder about — even if they don't say "ADR".
 ---
 
 # Write an ADR
@@ -18,7 +18,7 @@ plausible-sounding reason nobody gave is worse than no ADR, because people will 
   `0. template.md` isn't an ADR, so skip it when numbering.
 - List `docs/adr/` and skim the titles, to find:
   - **the next number:** highest existing number + 1, zero-padded to four digits
-  - **related ADRs:** if this decision reverses or replaces one, it supersedes it (see step 4)
+  - **related ADRs:** if this decision reverses or replaces one, see step 4
 
 ## 2. Pull the decision out of the conversation
 
@@ -94,13 +94,13 @@ Example of the target style:
 - A custom `source` condition is needed so TypeScript, ESLint and tsx resolve to `src/`.
 ```
 
-## 4. Superseding an older ADR
+## 4. Replacing an older ADR
 
 ADRs are never rewritten after they're accepted, except for their status. If the new decision
 replaces an existing one:
 
-- In the old ADR, change only the status line to `Superseded by ADR-NNNN`.
-- In the new ADR's Context, mention which ADR it supersedes and what changed since then.
+- In the old ADR, change only the status line to `Replaced by ADR-NNNN`.
+- In the new ADR's Context, mention which ADR it replaces and what changed since then.
 
 ## 5. Hand off
 

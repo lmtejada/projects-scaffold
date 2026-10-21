@@ -18,7 +18,7 @@
 - One decision per file: `NNNN-short-title.md`, numbered in order.
 - Keep each one skimmable in about 10 seconds: short bullets, plain words.
 - Don't edit an accepted ADR, except its status. To reverse a decision, write a new ADR and mark
-  the old one `Superseded by ADR-NNNN`.
+  the old one `Replaced by ADR-NNNN`.
 
 ## Consequences
 
