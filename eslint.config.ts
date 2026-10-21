@@ -28,10 +28,23 @@ export default defineConfig(
       ],
     },
     rules: {
+      // Import from src/ through the `#/` alias only, so imports read the same from any file
+      // and don't break when files move.
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              regex: "^\\.{1,2}(/|$)",
+              message: "Use the `#/` alias instead of a relative path (e.g. `#/config.js`).",
+            },
+          ],
+        },
+      ],
       "import-x/order": [
         "error",
         {
-          groups: ["builtin", "external", "internal", ["parent", "sibling", "index"], "type"],
+          groups: ["builtin", "external", "internal", "type"],
           pathGroups: [{ pattern: "#/**", group: "internal" }],
           "newlines-between": "always",
           alphabetize: { order: "asc", caseInsensitive: true },
