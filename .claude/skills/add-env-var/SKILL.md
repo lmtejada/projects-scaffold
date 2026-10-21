@@ -1,11 +1,11 @@
 ---
 name: add-env-var
-description: Add (or rename or remove) an environment variable in this project and keep all the places that must agree in sync — `.env.example`, the zod schema in `src/config.ts`, the README "Environment variables" table, GitHub Actions `env:` blocks, and repo secrets or variables. Use this whenever the user wants a new env var, config value, API key, secret, token, feature flag, port, URL, or setting read from the environment, or wants to rename or delete one — even if they just say "the app needs a DATABASE_URL" or "make the timeout configurable".
+description: Add (or rename or remove) an environment variable in this project and keep all the places that must agree in sync — `.env.example`, the zod schema in `src/config.ts`, GitHub Actions `env:` blocks, and repo secrets or variables. Use this whenever the user wants a new env var, config value, API key, secret, token, feature flag, port, URL, or setting read from the environment, or wants to rename or delete one — even if they just say "the app needs a DATABASE_URL" or "make the timeout configurable".
 ---
 
 # Add an environment variable
 
-One variable has to be declared in up to five places, and forgetting one either breaks
+One variable has to be declared in up to four places, and forgetting one either breaks
 startup or leaves a variable that nobody can find. Do them all in one go, in this order, and
 end with a verification and a short report of each place.
 
@@ -15,7 +15,7 @@ Ask for anything the user didn't say. Suggest sensible answers rather than askin
 questions:
 
 - **Name:** `UPPER_SNAKE_CASE`. Check that it's not already in `src/config.ts`.
-- **Purpose:** one line. It becomes the comment and the README description.
+- **Purpose:** one line. It becomes the comment in `.env.example`.
 - **Type:** string, number, boolean, enum (list the values), or URL.
 - **Required, or optional with a default.** Secrets are never given defaults.
 - **Secret or not:** API keys, tokens, passwords and connection strings with credentials are
@@ -26,10 +26,11 @@ questions:
 
 ## 2. `.env.example`
 
-Add a comment line and the variable, grouped with related ones:
+This file is the documentation for every variable (the README just points to it), so the
+comment must be complete. Add a comment line and the variable, grouped with related ones:
 
 ```sh
-# <Purpose>. <Required. | Optional, defaults to X.> <Values: a | b | c.>
+# <Purpose>. <Required. | Optional, defaults to X.> <Values: a | b | c.> <Secret.>
 NAME=<placeholder>
 ```
 
@@ -53,12 +54,7 @@ parses strings correctly:
 Code reads it as `config.NAME`. It's typed from the schema, so nothing else needs declaring.
 Don't read `process.env.NAME` anywhere else.
 
-## 4. README "Environment variables" table
-
-Add a row with the variable, Required, Default (`—` if none), Secret, and Description. Keep
-the same order as `.env.example`.
-
-## 5. Workflows (only if CI needs it)
+## 4. Workflows (only if CI needs it)
 
 If step 1 found a workflow step that reads it, add it to that **job's** or **step's** `env:`
 block, not the whole workflow, so it isn't exposed to steps that don't need it:
@@ -71,7 +67,7 @@ env:
 
 If CI doesn't need it, skip this step and say so in the report.
 
-## 6. Repo secrets and variables (only if CI needs it)
+## 5. Repo secrets and variables (only if CI needs it)
 
 - **Secret:** don't handle the value yourself. Secrets must not pass through the
   conversation or shell history. Tell the user to run `gh secret set NAME` (it prompts for
@@ -80,11 +76,11 @@ If CI doesn't need it, skip this step and say so in the report.
 - Check with `gh secret list` or `gh variable list` that it exists. Only the name shows, never
   the value.
 
-## 7. Verify
+## 6. Verify
 
 1. `npm run typecheck` and `npm run lint` pass.
-2. **Required variable:** start the app once (not in watch mode, e.g. `npm run build && npm
-start`) without it, and confirm the startup error names it. `config.ts` loads `.env`
+2. **Required variable:** start the app once (not in watch mode, e.g.
+   `npm run build && npm start`) without it, and confirm the startup error names it. `config.ts` loads `.env`
    itself, so `env -u NAME` isn't enough when `.env` defines it. Move `.env` aside
    (`mv .env .env.bak`) for the run and restore it afterwards.
 3. **Default value:** confirm the app starts without it, the same way.
@@ -92,7 +88,7 @@ start`) without it, and confirm the startup error names it. `config.ts` loads `.
 
 ## Report
 
-List the five places with ✓ (done), "skipped: <reason>" (e.g. "not needed in CI"), or "you
+List the four places with ✓ (done), "skipped: <reason>" (e.g. "not needed in CI"), or "you
 need to: <command>" for secrets the user must set themselves.
 
 ## Renaming or removing

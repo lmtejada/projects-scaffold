@@ -41,7 +41,7 @@ Read `git diff origin/main...HEAD` in full, not just the stat. Look for:
   - `import type` for types
   - env vars read only through `config`
 - **Things that must change together:**
-  - **New or changed env var:** `.env.example`, `src/config.ts` and the README table (the
+  - **New or changed env var:** `.env.example` and `src/config.ts` (the
     `add-env-var` skill does all of them).
   - **New or renamed script:** the README scripts table and CLAUDE.md.
   - **Renamed CI job:** the `main` ruleset's required check.

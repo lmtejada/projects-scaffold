@@ -23,7 +23,7 @@ npm run format      # auto-format
 - Import from `src/` only via the `#/` alias (`#/config.js`, defined in `package.json` `"imports"`). Relative imports (`./`, `../`) are rejected by ESLint.
 - Use `import type` for type-only imports (`verbatimModuleSyntax` is on).
 - Read env vars only through `config` from `src/config.ts`; never use `process.env` elsewhere.
-  New variables go in the zod schema, `.env.example` and the README table: use the `add-env-var` skill.
+  New variables go in the zod schema and `.env.example`: use the `add-env-var` skill.
 - Import order is enforced by `import-x/order`: builtins, external, `#/` internal, then `import type`.
 - Commits and PR titles follow Conventional Commits (`feat: ...`, `fix(scope): ...`).
 - Tooling goes in `devDependencies`. Keep runtime dependencies minimal.
