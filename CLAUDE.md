@@ -11,6 +11,7 @@ Node version is pinned in `.nvmrc` (24 LTS) and enforced via `engines` + `engine
 
 ```sh
 npm run dev         # run with tsx in watch mode
+npm start           # run the compiled app from dist/ (after npm run build)
 npm run check       # everything CI runs — must pass before you finish a task
 npm run lint:fix    # auto-fix lint issues
 npm run format      # auto-format
