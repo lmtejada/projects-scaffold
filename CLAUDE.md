@@ -19,12 +19,12 @@ npm run format      # auto-format
 
 ## Conventions
 
-- ESM only. Relative imports **must** end in `.js` (`./foo.js`), even though the file is `foo.ts`.
-- Import from `src/` via the `#/` alias (`#/config.js`, defined in `package.json` `"imports"`) rather than long `../../` paths.
+- ESM only. Imports of project files **must** end in `.js` (`#/foo.js`), even though the file is `foo.ts`.
+- Import from `src/` only via the `#/` alias (`#/config.js`, defined in `package.json` `"imports"`). Relative imports (`./`, `../`) are rejected by ESLint.
 - Use `import type` for type-only imports (`verbatimModuleSyntax` is on).
 - Read env vars only through `config` from `src/config.ts`; never use `process.env` elsewhere.
   New variables go in the zod schema **and** `.env.example`, each with a comment.
-- Import order is enforced by `import-x/order`: builtins, external, `#/` internal, relative.
+- Import order is enforced by `import-x/order`: builtins, external, `#/` internal, then `import type`.
 - Commits and PR titles follow Conventional Commits (`feat: ...`, `fix(scope): ...`).
 - Tooling goes in `devDependencies`. Keep runtime dependencies minimal.
 - Use `npm` (lockfile is `package-lock.json`). No `npx` inside npm scripts.

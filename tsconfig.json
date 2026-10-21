@@ -6,7 +6,7 @@
     "target": "es2024",
     "lib": ["es2024"],
     // Node runs the compiled output, so TypeScript must follow Node's ESM rules:
-    // relative imports need explicit `.js` extensions.
+    // imports of project files need explicit `.js` extensions.
     "module": "nodenext",
     "types": ["node"],
 

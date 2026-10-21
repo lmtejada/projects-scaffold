@@ -58,8 +58,10 @@ npm run dev
 
 ## Conventions
 
-- **ES modules** throughout (`"type": "module"`). Relative imports use `.js` extensions
-  (`import { x } from "./x.js"`), as Node requires for compiled ESM.
+- **ES modules** throughout (`"type": "module"`). Imports of project files use `.js`
+  extensions (`#/config.js` for `config.ts`), as Node requires for compiled ESM.
+- **No relative imports:** import project files through the `#/` alias only. ESLint
+  (`no-restricted-imports`) rejects `./` and `../` paths.
 - **Path alias:** `#/*` maps to `src/*` (e.g. `import { config } from "#/config.js"`), using
   Node's native [subpath imports](https://nodejs.org/api/packages.html#subpath-imports) in
   `package.json` — no build-time rewriting. A custom `source` condition points TypeScript,
