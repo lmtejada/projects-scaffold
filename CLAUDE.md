@@ -35,8 +35,8 @@ npm run format      # auto-format
 - ESLint rules or presets — fix the code instead of disabling rules. No `eslint-disable`
   comments without a reason in the same comment.
 - Git hooks in `.husky/`, `commitlint.config.ts`, `.lintstagedrc.json`.
-- `.github/workflows/*`: action SHA pins, permissions, and the `ci` job id (the `main`
-  ruleset requires a check with that name).
+- `.github/workflows/*`: action SHA pins, permissions, and the CI job name
+  `Format and Type Check` (the `main` ruleset requires a check with that exact name).
 - `.nvmrc` / `engines`, or adding new dependencies (especially runtime ones, or `dotenv`).
 - `LICENSE`.
 
