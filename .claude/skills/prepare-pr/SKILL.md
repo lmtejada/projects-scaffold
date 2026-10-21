@@ -78,13 +78,41 @@ changed:
 
 - **Summary:** what changed and why, in a few bullets. Link issues (`Closes #123`) if the
   user mentioned any.
-- **How to verify:** concrete steps a reviewer can follow (commands, inputs, expected
-  output), not "run the tests".
+- **How to verify:** short numbered steps a reviewer can follow (command, then the expected
+  result), not "run the tests".
 - **Checklist:** tick only what you actually verified in this session. Leave the rest
   unticked, and say why if it's not obvious (e.g. "no env changes" still counts as ticked
   for the env item).
 
 End the body with the attribution line the session's instructions require, if any.
+
+### Writing style
+
+A reviewer should be able to skim the description in a few seconds and know what changed, why,
+and how to check it.
+
+- **Bullets over paragraphs.** Use one idea per bullet, and keep most bullets to one line.
+  Use a short paragraph only when bullets would lose the reasoning.
+- **Lead with the point.** Each Summary bullet starts with what changed, then a short "so
+  that…" or "because…" if the reason isn't obvious.
+- **Plain words first.** Use a technical term only when no plain word is as precise, e.g.
+  "safe to re-run" rather than "idempotent". Exact file names, commands, versions and error
+  messages are precision, not jargon, so keep them.
+- **Cut filler.** Skip openings like "This PR…", repeating the title, explaining the
+  obvious, and hedging.
+- **Group, don't list everything.** For many similar changes, such as dependency bumps,
+  write one bullet or a small table rather than a bullet per file.
+- **Check before handing off:** could a reviewer skim it in about 10 seconds and get it? If
+  not, shorten it.
+
+Example Summary:
+
+```markdown
+- Move the lint-staged config from `.lintstagedrc.json` into `package.json`, so there's one
+  less root file
+- Remove the shared `.vscode/` settings; editor setup is now up to each developer
+- Ignore `.vscode/` entirely in `.gitignore`
+```
 
 ## 6. Hand off
 

@@ -47,11 +47,51 @@ list with the user first.
 - **Options:** the template has no separate section for them. Put them in **Context**, or in
   **Decision** as "We considered X and Y; …", whichever reads better. Keep them, because
   they're often the most useful part later.
-- **Length:** a page at most. Write full sentences, not bullet fragments, and link to the PR,
-  issue, release notes or advisory when the conversation mentions one.
+- **Length:** as short as it can be while still answering "why?". Usually 10–20 bullets in
+  total. Link to the PR, issue, release notes or advisory when the conversation mentions one.
+- **Style:** follow [Writing style](#writing-style) below. It overrides wording hints inside
+  the template, such as "stated in full sentences".
 
 Run `npm run format` (or `prettier --write` on the file) afterwards so it passes
 `format:check`.
+
+## Writing style
+
+Someone should be able to skim an ADR in a few seconds and know what was decided and why.
+
+- **Bullets over paragraphs.** Give each section a short bullet list, with one idea per bullet,
+  and keep most bullets to one line.
+- **Lead with the point.** Start Decision with "We will …". Under each option, say what it
+  was and why it lost.
+- **Plain words first.** Use a technical term only when no plain word is as precise, e.g.
+  "safe to re-run" rather than "idempotent". Exact file names, commands, versions and error
+  messages are precision, not jargon, so keep them.
+- **Cut filler.** Skip openings like "This ADR describes…", repeating the title, and hedging.
+- **Check before handing off:** could someone skim it in about 10 seconds and get it? If not,
+  shorten it.
+
+Example of the target style:
+
+```markdown
+## Context
+
+- `tsc` doesn't rewrite path aliases, so `@/x` imports break in `dist/`.
+- `tsc-alias` fixes that, but pulls in `braces`, which has a high-severity advisory with no
+  fix (GHSA-vfj7-8cjw-p6xm).
+- CI fails on high-severity advisories, and we don't want to lower that bar.
+
+## Decision
+
+- We will use Node's built-in subpath imports: `#/*` → `src/*` in `package.json` `"imports"`.
+- We considered keeping `@/*` and auditing production dependencies only, but rejected it
+  because it weakens the security check.
+
+## Consequences
+
+- No extra dependency, and nothing is rewritten at build time.
+- Imports start with `#/` instead of `@/`.
+- A custom `source` condition is needed so TypeScript, ESLint and tsx resolve to `src/`.
+```
 
 ## 4. Superseding an older ADR
 
